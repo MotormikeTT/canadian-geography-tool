@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Classes\" />
   </ItemGroup>
 
 </Project>
