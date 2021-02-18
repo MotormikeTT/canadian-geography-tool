@@ -15,6 +15,8 @@
     <Reference Include="System.Device">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Device.dll</HintPath>
     </Reference>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Classes\" />
   </ItemGroup>
 
 </Project>
