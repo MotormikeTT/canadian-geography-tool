@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Project1_Group_16.Classes
 {
-    class CityInfo
+    public class CityInfo
     {
         public ulong CityID { get; set; }
         public string CityName { get; set; }
