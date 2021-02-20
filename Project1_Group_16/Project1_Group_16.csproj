@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
@@ -10,6 +10,12 @@
     <Folder Include="Data\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Classes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Device">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Device.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
