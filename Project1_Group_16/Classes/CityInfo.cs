@@ -13,9 +13,10 @@ namespace Project1_Group_16.Classes
         public string Province { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public string Capital { get; set; }
 
         // constructors
-        public CityInfo(string cityID, string cityName, string cityAscii, string population, string province, string latitude, string longitude)
+        public CityInfo(string cityID, string cityName, string cityAscii, string population, string province, string latitude, string longitude, string capital)
         {
             if (ulong.TryParse(cityID, out ulong id))
                 CityID = id;
@@ -28,13 +29,26 @@ namespace Project1_Group_16.Classes
 
             if (double.TryParse(longitude, out double lng))
                 Longitude = lng;
+            
+            switch (capital)
+            {
+                case "admin":
+                    Capital = province;
+                    break;
+                case "primary":
+                    Capital = cityName;
+                    break;
+                default:
+                    Capital = capital;
+                    break;
+            }
 
             CityName = cityName;
             CityAscii = cityAscii;
             Province = province;
         }
 
-        public CityInfo(ulong cityID, string cityName, string cityAscii, ulong population, string province, double latitude, double longitude)
+        public CityInfo(ulong cityID, string cityName, string cityAscii, ulong population, string province, double latitude, double longitude, string capital)
         {
             CityID = cityID;
             CityName = cityName;
@@ -43,6 +57,7 @@ namespace Project1_Group_16.Classes
             Province = province;
             Latitude = latitude;
             Longitude = longitude;
+            Capital = capital;
         }
 
         /// <summary>
