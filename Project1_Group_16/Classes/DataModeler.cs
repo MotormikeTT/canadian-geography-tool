@@ -9,7 +9,7 @@ namespace Project1_Group_16.Classes
 {
     class DataModeler
     {
-        private static Dictionary<string, CityInfo> _cityCatalogue = new Dictionary<string, CityInfo>();
+        private static Dictionary<string, CityInfo> _cityCatalogue;
 
         private delegate void Parse(string fileName);
 
@@ -34,6 +34,8 @@ namespace Project1_Group_16.Classes
                     throw new Exception($"Invalid file type has been entered: {fileType}. File type should only be one of the following: xml, csv, json");
             }
 
+            // create a new dictionary instance
+            _cityCatalogue = new Dictionary<string, CityInfo>();
             // call the delegate to parse the specified file
             parseDel(fileName);
 
@@ -62,10 +64,11 @@ namespace Project1_Group_16.Classes
                 CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng, capital);
 
                 // add to dictionary
-                if (!_cityCatalogue.ContainsKey(name))
+                string key = $"{name}, {province}";
+                if (!_cityCatalogue.ContainsKey(key))
                 {
                     if (name != string.Empty)
-                        _cityCatalogue.Add($"{name}, {province}", cityInfo);
+                        _cityCatalogue.Add(key, cityInfo);
                 }
             }
         }
@@ -93,10 +96,11 @@ namespace Project1_Group_16.Classes
                 CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng, capital);
 
                 // add to dictionary
-                if (!_cityCatalogue.ContainsKey(name))
+                string key = $"{name}, {province}";
+                if (!_cityCatalogue.ContainsKey(key))
                 {
                     if (name != string.Empty)
-                        _cityCatalogue.Add($"{name}, {province}", cityInfo);
+                        _cityCatalogue.Add(key, cityInfo);
                 }
             }
         }
@@ -127,10 +131,11 @@ namespace Project1_Group_16.Classes
                 CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng, capital);
 
                 // add to dictionary
-                if (!_cityCatalogue.ContainsKey(name))
+                string key = $"{name}, {province}";
+                if (!_cityCatalogue.ContainsKey(key))
                 {
                     if (name != string.Empty)
-                        _cityCatalogue.Add($"{name}, {province}", cityInfo);
+                        _cityCatalogue.Add(key, cityInfo);
                 }
             }
         }

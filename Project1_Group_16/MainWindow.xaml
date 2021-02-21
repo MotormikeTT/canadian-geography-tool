@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project1_Group_16"
+        DataContext="{Binding Path=MainWindowViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -19,12 +20,12 @@
             <TextBlock Padding="20 5 5 5">
                 Province:
             </TextBlock>
-            <ComboBox Margin="20 5 20 5" ItemsSource="{Binding provinces}">
+            <ComboBox Name="provinceList" Margin="20 5 20 5" ItemsSource="{Binding provinces, Mode=TwoWay, NotifyOnSourceUpdated=True}">
             </ComboBox>
             <TextBlock Padding="20 5 5 5">
                 City:
             </TextBlock>
-            <ComboBox Margin="20 5 20 5" ItemsSource="{Binding cities}">
+            <ComboBox Margin="20 5 20 5" ItemsSource="{Binding cities, Mode=TwoWay, NotifyOnSourceUpdated=True}">
             </ComboBox>
             <Button HorizontalAlignment="Center" Click="Button_ClickParse"
                 Height="30px"
@@ -104,17 +105,14 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock FontWeight="Bold">Compare Population</TextBlock>
-                            <TextBlock Grid.Row="1" Margin="0,10,0,0" Padding="5">City #1</TextBlock>
-                            <ComboBox Grid.Row="2" Margin="0,0,5,0" ItemsSource="{Binding cities}">
+                            <TextBlock Grid.Row="0" Margin="0,10,0,0" Padding="5">City #1</TextBlock>
+                            <ComboBox Grid.Row="1" Margin="0,0,10,36" ItemsSource="{Binding cities}" Grid.ColumnSpan="2" Grid.RowSpan="2">
                             </ComboBox>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,10,0,0" Padding="5">City #2</TextBlock>
-                            <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,0,5,0" ItemsSource="{Binding cities}">
-                            </ComboBox>
-                            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Margin="0,10,0,0" Padding="5">Larger City:</TextBlock>
+                            <TextBlock Grid.Row="2" FontWeight="Bold">Compare Population</TextBlock>
+                            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Padding="5">Larger City:</TextBlock>
                             <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Padding="5,0,0,0">Population:</TextBlock>
                             <Button Grid.Row="5" Grid.ColumnSpan="2" Margin="0,20,0,0" Padding="5" Height="30px"
-                Width="150px" Click="Button_ClickCompare">Compare</Button>
+                             Width="150px" Click="Button_ClickCompare">Compare</Button>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1" Margin="10, 30, 10 10">
@@ -130,16 +128,12 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock FontWeight="Bold">Calculate Distance</TextBlock>
-                        <TextBlock Grid.Row="1" Margin="0,10,0,0" Padding="5">City #1</TextBlock>
-                        <ComboBox Grid.Row="2" Margin="0,0,5,0" ItemsSource="{Binding cities}">
-                        </ComboBox>
-                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,10,0,0" Padding="5">City #2</TextBlock>
-                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,0,5,0" ItemsSource="{Binding cities}">
-                        </ComboBox>
+                        <TextBlock Grid.Row="0" Margin="0,10,0,22" Padding="5" Grid.RowSpan="2">City #2</TextBlock>
+                        <ComboBox Grid.Row="1" Margin="2,28,10,10" ItemsSource="{Binding cities}" Grid.ColumnSpan="2"/>
+                        <TextBlock Grid.Row="2" FontWeight="Bold">Calculate Distance</TextBlock>
                         <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Margin="0,10,0,0" Padding="5">Total Distance:</TextBlock>
-                        <Button Grid.Row="5" Grid.ColumnSpan="2" Margin="0,20,0,0" Padding="5" Height="30px"
-                Width="150px" Click="Button_ClickCalculate">Calculate</Button>
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Margin="0,20,0,0" Padding="5" Height="30px"
+                        Width="150px" Click="Button_ClickCalculate">Calculate</Button>
                     </Grid>
                 </Grid>
             </StackPanel>
