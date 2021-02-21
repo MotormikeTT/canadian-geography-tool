@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CsvHelper;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace Project1_Group_16.Classes
                     break;
 
                 default:
-                    throw new Exception($"Invalid file type has been entered: {fileType}. file type should only be one of the following: xml, csv, json");
+                    throw new Exception($"Invalid file type has been entered: {fileType}. File type should only be one of the following: xml, csv, json");
             }
 
             // call the delegate to parse the specified file
@@ -106,7 +107,33 @@ namespace Project1_Group_16.Classes
         /// <param name="fileName">the file name to be parsed</param>
         private static void ParseCSV(string fileName)
         {
+            List<string> cityData = new List<string>(File.ReadAllLines(fileName));
+            // remove headers
+            cityData.RemoveAt(0);
 
+            foreach (var c in cityData)
+            {
+                string[] city = c.Split(',');
+
+                string Id = city[8];
+                string name = city[0];
+                string asci = city[1];
+                string population = city[7];
+                string province = city[5];
+                string lat = city[2];
+                string lng = city[3];
+
+                CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng);
+
+                // add to dictionary
+                if (!_cityCatalogue.ContainsKey(name))
+                {
+                    if (name != string.Empty)
+                        _cityCatalogue.Add(name, cityInfo);
+                }
+                else    // for cities with the same name add province name as well for key
+                    _cityCatalogue.Add($"{name}, {province}", cityInfo);
+            }
         }
     }
 }

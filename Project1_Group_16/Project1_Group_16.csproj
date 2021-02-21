@@ -12,7 +12,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="24.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Device">
+      <HintPath>..\..\..\Downloads\System.Device.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
