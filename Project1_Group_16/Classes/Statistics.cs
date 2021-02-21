@@ -22,9 +22,9 @@ namespace Project1_Group_16.Classes
         /// </summary>
         /// <param name="city">A string with the name of the city.</param>
         /// <returns>A list with the city information</returns>
-        public List<CityInfo> DisplayCityInformation(string city)
+        public CityInfo DisplayCityInformation(string city)
         {
-            return CityCatalogue.Where(c => c.Key.Contains(city)).Select(x => x.Value).ToList();
+            return CityCatalogue[city];
         }
 
         /// <summary>
@@ -51,13 +51,11 @@ namespace Project1_Group_16.Classes
         /// Compares 2 cities population
         /// </summary>
         /// <param name="city1">A string with the name of city 1.</param>
-        /// <param name="province1">A string with the name of province 1.</param>
         /// <param name="city2">A string with the name of city 2.</param>
-        /// <param name="province2">A string with the name of province 2.</param>
         /// <returns></returns>
-        public (CityInfo, ulong, ulong) CompareCitiesPopulation(string city1, string province1, string city2, string province2)
+        public (CityInfo, ulong, ulong) CompareCitiesPopulation(string city1, string city2)
         {
-            return (CityCatalogue[$"{city1}, {province1}"].Population > CityCatalogue[$"{city2}, {province2}"].Population ? CityCatalogue[$"{city1}, {province1}"] : CityCatalogue[$"{city2}, {province2}"], CityCatalogue[city2].Population, CityCatalogue[$"{city1}, {province1}"].Population);
+            return (CityCatalogue[city1].Population > CityCatalogue[city2].Population ? CityCatalogue[city1] : CityCatalogue[city2], CityCatalogue[city2].Population, CityCatalogue[city1].Population);
         }
 
         /// <summary>
@@ -77,14 +75,12 @@ namespace Project1_Group_16.Classes
         /// Gets the distance between cities.
         /// </summary>
         /// <param name="city1">A string with the name of city 1.</param>
-        /// <param name="province1">A string with the name of province 1.</param>
         /// <param name="city2">A string with the name of city 2.</param>
-        /// <param name="province2">A string with the name of province 2.</param>
         /// <returns>A double with the distance between two cities.</returns>
-        public double CalculateDistanceBetweenCities(string city1, string province1, string city2, string province2)
+        public double CalculateDistanceBetweenCities(string city1, string city2)
         {
-            GeoCoordinate city1Coord = new GeoCoordinate(CityCatalogue[$"{city1}, {province1}"].Latitude, CityCatalogue[$"{city1}, {province1}"].Longitude);
-            GeoCoordinate city2Coord = new GeoCoordinate(CityCatalogue[$"{city2}, {province2}"].Latitude, CityCatalogue[$"{city2}, {province2}"].Longitude);
+            GeoCoordinate city1Coord = new GeoCoordinate(CityCatalogue[city1].Latitude, CityCatalogue[city1].Longitude);
+            GeoCoordinate city2Coord = new GeoCoordinate(CityCatalogue[city2].Latitude, CityCatalogue[city2].Longitude);
 
             return city1Coord.GetDistanceTo(city2Coord);
         }
