@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Device.Location;
 
@@ -12,7 +11,7 @@ namespace Project1_Group_16.Classes
 
         public Statistics(string fileName, string fileType)
         {
-            //CityCatalogue = DataModeler.ParseFile(fileName, fileType);
+            CityCatalogue = DataModeler.ParseFile(fileName, fileType);
         }
 
         public CityInfo DisplayCityInformation(string city)
