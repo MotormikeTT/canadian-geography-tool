@@ -63,9 +63,10 @@ namespace Project1_Group_16.Classes
 
                 // add to dictionary
                 if (!_cityCatalogue.ContainsKey(name))
-                    _cityCatalogue.Add(name, cityInfo);
-                else    // for cities with the same name add province name as well for key
-                    _cityCatalogue.Add($"{name}, {province}", cityInfo);
+                {
+                    if (name != string.Empty)
+                        _cityCatalogue.Add($"{name}, {province}", cityInfo);
+                }
             }
         }
 
@@ -95,10 +96,8 @@ namespace Project1_Group_16.Classes
                 if (!_cityCatalogue.ContainsKey(name))
                 {
                     if (name != string.Empty)
-                        _cityCatalogue.Add(name, cityInfo);
+                        _cityCatalogue.Add($"{name}, {province}", cityInfo);
                 }
-                else    // for cities with the same name add province name as well for key
-                    _cityCatalogue.Add($"{name}, {province}", cityInfo);
             }
         }
 
@@ -131,10 +130,8 @@ namespace Project1_Group_16.Classes
                 if (!_cityCatalogue.ContainsKey(name))
                 {
                     if (name != string.Empty)
-                        _cityCatalogue.Add(name, cityInfo);
+                        _cityCatalogue.Add($"{name}, {province}", cityInfo);
                 }
-                else    // for cities with the same name add province name as well for key
-                    _cityCatalogue.Add($"{name}, {province}", cityInfo);
             }
         }
     }
