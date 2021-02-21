@@ -53,5 +53,16 @@ namespace Project1_Group_16
                 Console.WriteLine(ex.Message);
             }
         }
+
+        // calculate distance between two cities
+        private void Button_ClickCalculate(object sender, RoutedEventArgs e)
+        {
+
+        }
+        // compare population of two cities
+        private void Button_ClickCompare(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
