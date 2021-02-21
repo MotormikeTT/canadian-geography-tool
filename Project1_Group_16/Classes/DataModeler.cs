@@ -58,8 +58,9 @@ namespace Project1_Group_16.Classes
                 string province = node.ChildNodes[5]?.InnerText;
                 string lat = node.ChildNodes[2]?.InnerText;
                 string lng = node.ChildNodes[3]?.InnerText;
+                string capital = node.ChildNodes[6]?.InnerText;
 
-                CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng);
+                CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng, capital);
 
                 // add to dictionary
                 if (!_cityCatalogue.ContainsKey(name))
@@ -87,8 +88,9 @@ namespace Project1_Group_16.Classes
                 string province = item.Value<string>("admin_name");
                 string lat = item.Value<string>("lat");
                 string lng = item.Value<string>("lng");
+                string capital = item.Value<string>("capital");
 
-                CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng);
+                CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng, capital);
 
                 // add to dictionary
                 if (!_cityCatalogue.ContainsKey(name))
@@ -122,8 +124,9 @@ namespace Project1_Group_16.Classes
                 string province = city[5];
                 string lat = city[2];
                 string lng = city[3];
+                string capital = city[6];
 
-                CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng);
+                CityInfo cityInfo = new CityInfo(Id, name, asci, population, province, lat, lng, capital);
 
                 // add to dictionary
                 if (!_cityCatalogue.ContainsKey(name))
