@@ -6,7 +6,51 @@
         xmlns:local="clr-namespace:Project1_Group_16"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <TextBlock Background="LightBlue" FontSize="18" Padding="10 1 0 3"
+                DockPanel.Dock="Top">Canadian Geography Tool</TextBlock>
+        <TextBlock DockPanel.Dock="Bottom"
+                Background="LightYellow">INFO5101 C# Advanced Topics - Project 1\Group 33</TextBlock>
+        <StackPanel DockPanel.Dock="Left"
+                Background="Lavender" Width="200">
+            <TextBlock Padding="5" FontWeight="Bold">
+                General Input:
+            </TextBlock>
+            <TextBlock Padding="20 5 5 5">
+                Province:
+            </TextBlock>
+            <ComboBox Margin="20 5 20 5" ItemsSource="{Binding provinces}">
+            </ComboBox>
+            <TextBlock Padding="20 5 5 5">
+                City:
+            </TextBlock>
+            <ComboBox Margin="20 5 20 5" ItemsSource="{Binding cities}">
+            </ComboBox>
+            <Button HorizontalAlignment="Center" Click="Button_ClickParse"
+                Height="30px"
+                Width="100px"
+                Margin="10,50,10,10">Parse JSON</Button>
+            <Button HorizontalAlignment="Center" Click="Button_ClickParse"
+                Height="30px"
+                Width="100px"
+                Margin="10,10,10,10">Parse XML</Button>
+            <Button HorizontalAlignment="Center" Click="Button_ClickParse"
+                Height="30px"
+                Width="100px"
+                Margin="10,10,10,10">Parse CSV</Button>
+        </StackPanel>
+        <DockPanel Background="DodgerBlue">
+            <StackPanel DockPanel.Dock="Top" Height="131">
+                <TextBlock Padding="10 5 0 0" FontWeight="Bold">Information Section:</TextBlock>
+                <TextBlock Padding="10 5 0 0">Province Name:</TextBlock>
+                <TextBlock Padding="10 5 0 0">Province Population:</TextBlock>
+                <TextBlock Padding="10 5 0 0">City Name:</TextBlock>
+                <TextBlock Padding="10 5 0 0">City Population:</TextBlock>
+                <TextBlock Padding="10 5 0 0">City Location:</TextBlock>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Background="LightGreen" Height="258">
+                <TextBlock Padding="10 5 0 0" FontWeight="Bold">Functions:</TextBlock>
+            </StackPanel>
+        </DockPanel>
+    </DockPanel>
 </Window>

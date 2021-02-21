@@ -1,17 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Project1_Group_16.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Project1_Group_16
 {
@@ -20,9 +12,46 @@ namespace Project1_Group_16
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Statistics stats;
+        private List<string> provinces;
+        private List<string> cities;
+
         public MainWindow()
         {
             InitializeComponent();
+            provinces = new List<string>();
+            cities = new List<string>();
+        }
+
+        private void Button_ClickParse(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string browsedType = sender.ToString().Split(' ')[2].ToLower();
+
+                OpenFileDialog openFileDialog = new OpenFileDialog
+                {
+                    Title = "Browse for data file to parse",
+                    Filter = $"{browsedType} files (*.{browsedType})|*.{browsedType}"
+                };
+
+                bool? result = openFileDialog.ShowDialog();
+                if (result.HasValue && result.Value)
+                {
+                    //string ext = openFileDialog.FileName.Substring(openFileDialog.FileName.LastIndexOf('.') + 1);
+                    stats = new Statistics(openFileDialog.FileName, browsedType);
+                }
+
+                // after parsing make sure provinces and cities collections are populated
+                if (!provinces.Any())
+                {
+                    //stats.
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
