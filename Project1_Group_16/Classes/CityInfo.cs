@@ -17,32 +17,32 @@ namespace Project1_Group_16.Classes
         // constructors
         public CityInfo(string cityID, string cityName, string cityAscii, string population, string province, string latitude, string longitude)
         {
-            if(ulong.TryParse(cityID, out ulong id))
-                this.CityID = id;
+            if (ulong.TryParse(cityID, out ulong id))
+                CityID = id;
 
             if (ulong.TryParse(population, out ulong pop))
-                this.Population = pop;
+                Population = pop;
 
             if (double.TryParse(latitude, out double lat))
-                this.Latitude = lat;
+                Latitude = lat;
 
             if (double.TryParse(longitude, out double lng))
-                this.Longitude = lng;
+                Longitude = lng;
 
-            this.CityName = cityName;
-            this.CityAscii = cityAscii;
-            this.Province = province;
+            CityName = cityName;
+            CityAscii = cityAscii;
+            Province = province;
         }
 
         public CityInfo(ulong cityID, string cityName, string cityAscii, ulong population, string province, double latitude, double longitude)
         {
-            this.CityID = cityID;
-            this.CityName = cityName;
-            this.CityAscii = cityAscii;
-            this.Population = population;
-            this.Province = province;
-            this.Latitude = latitude;
-            this.Longitude = longitude;
+            CityID = cityID;
+            CityName = cityName;
+            CityAscii = cityAscii;
+            Population = population;
+            Province = province;
+            Latitude = latitude;
+            Longitude = longitude;
         }
 
         /// <summary>
