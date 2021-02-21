@@ -40,16 +40,108 @@
                 Margin="10,10,10,10">Parse CSV</Button>
         </StackPanel>
         <DockPanel Background="DodgerBlue">
-            <StackPanel DockPanel.Dock="Top" Height="131">
-                <TextBlock Padding="10 5 0 0" FontWeight="Bold">Information Section:</TextBlock>
-                <TextBlock Padding="10 5 0 0">Province Name:</TextBlock>
-                <TextBlock Padding="10 5 0 0">Province Population:</TextBlock>
-                <TextBlock Padding="10 5 0 0">City Name:</TextBlock>
-                <TextBlock Padding="10 5 0 0">City Population:</TextBlock>
-                <TextBlock Padding="10 5 0 0">City Location:</TextBlock>
+            <StackPanel DockPanel.Dock="Top" Height="145">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontWeight="Bold">Province Information</TextBlock>
+                        <TextBlock Grid.Row="1" Padding="5">Province Name:</TextBlock>
+                        <TextBlock Grid.Row="2" Padding="5">Province Population:</TextBlock>
+                    </Grid>
+                    <Grid Grid.Column="1" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontWeight="Bold">City Information</TextBlock>
+                        <TextBlock Grid.Row="1" Padding="5">City Name:</TextBlock>
+                        <TextBlock Grid.Row="2" Padding="5">City Population:</TextBlock>
+                        <TextBlock Grid.Row="3" Padding="5">City Location:</TextBlock>
+                    </Grid>
+                </Grid>
             </StackPanel>
             <StackPanel DockPanel.Dock="Bottom" Background="LightGreen" Height="258">
-                <TextBlock Padding="10 5 0 0" FontWeight="Bold">Functions:</TextBlock>
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontWeight="Bold">Functions</TextBlock>
+                    <Grid Margin="10, 30, 10 10">
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock FontWeight="Bold">Compare Population</TextBlock>
+                            <TextBlock Grid.Row="1" Margin="0,10,0,0" Padding="5">City #1</TextBlock>
+                            <ComboBox Grid.Row="2" Margin="0,0,5,0" ItemsSource="{Binding cities}">
+                            </ComboBox>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,10,0,0" Padding="5">City #2</TextBlock>
+                            <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,0,5,0" ItemsSource="{Binding cities}">
+                            </ComboBox>
+                            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Margin="0,10,0,0" Padding="5">Larger City:</TextBlock>
+                            <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Padding="5,0,0,0">Population:</TextBlock>
+                            <Button Grid.Row="5" Grid.ColumnSpan="2" Margin="0,20,0,0" Padding="5" Height="30px"
+                Width="150px" Click="Button_ClickCompare">Compare</Button>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1" Margin="10, 30, 10 10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontWeight="Bold">Calculate Distance</TextBlock>
+                        <TextBlock Grid.Row="1" Margin="0,10,0,0" Padding="5">City #1</TextBlock>
+                        <ComboBox Grid.Row="2" Margin="0,0,5,0" ItemsSource="{Binding cities}">
+                        </ComboBox>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,10,0,0" Padding="5">City #2</TextBlock>
+                        <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,0,5,0" ItemsSource="{Binding cities}">
+                        </ComboBox>
+                        <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Margin="0,10,0,0" Padding="5">Total Distance:</TextBlock>
+                        <Button Grid.Row="5" Grid.ColumnSpan="2" Margin="0,20,0,0" Padding="5" Height="30px"
+                Width="150px" Click="Button_ClickCalculate">Calculate</Button>
+                    </Grid>
+                </Grid>
             </StackPanel>
         </DockPanel>
     </DockPanel>
