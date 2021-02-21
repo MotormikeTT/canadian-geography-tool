@@ -7,7 +7,7 @@ namespace Project1_Group_16.Classes
     class Statistics
     {
         // Properties
-        private Dictionary<string, CityInfo> CityCatalogue = new Dictionary<string, CityInfo>();
+        internal Dictionary<string, CityInfo> CityCatalogue = new Dictionary<string, CityInfo>();
 
         public Statistics(string fileName, string fileType)
         {
