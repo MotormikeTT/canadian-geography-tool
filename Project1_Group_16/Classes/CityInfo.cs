@@ -50,6 +50,19 @@ namespace Project1_Group_16.Classes
 
         public CityInfo(ulong cityID, string cityName, string cityAscii, ulong population, string province, double latitude, double longitude, string capital)
         {
+            switch (capital)
+            {
+                case "admin":
+                    Capital = province;
+                    break;
+                case "primary":
+                    Capital = cityName;
+                    break;
+                default:
+                    Capital = capital;
+                    break;
+            }
+
             CityID = cityID;
             CityName = cityName;
             CityAscii = cityAscii;
@@ -57,7 +70,7 @@ namespace Project1_Group_16.Classes
             Province = province;
             Latitude = latitude;
             Longitude = longitude;
-            Capital = capital;
+            
         }
 
         /// <summary>
