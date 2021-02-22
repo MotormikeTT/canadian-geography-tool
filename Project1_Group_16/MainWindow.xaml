@@ -10,7 +10,7 @@
         <TextBlock Background="LightBlue" FontSize="18" Padding="10 1 0 3"
                 DockPanel.Dock="Top">Canadian Geography Tool</TextBlock>
         <TextBlock DockPanel.Dock="Bottom" Padding="2"
-                Background="LightYellow">INFO5101 C# Advanced Topics - Project 1\Group 33</TextBlock>
+                Background="LightYellow">INFO5101 C# Advanced Topics - Project 1\Group 16</TextBlock>
         <StackPanel DockPanel.Dock="Left"
                 Background="Lavender" Width="200">
             <TextBlock Padding="5" FontWeight="Bold">
