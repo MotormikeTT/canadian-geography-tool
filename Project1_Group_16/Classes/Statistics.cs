@@ -92,7 +92,7 @@ namespace Project1_Group_16.Classes
         /// <returns>A ulong with the population of the province.</returns>
         public ulong DisplayProvincePopulation(string province)
         {
-            return (ulong)CityCatalogue.Where(city => city.Value.Province == province.ToLower()).Sum(city => (decimal)city.Value.Population);
+            return (ulong)CityCatalogue.Where(city => city.Value.Province == province).Sum(city => (decimal)city.Value.Population);
         }
 
         /// <summary>

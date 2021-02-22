@@ -44,6 +44,9 @@ namespace Project1_Group_16
 
                     // after parsing make sure provinces and cities collections are populated
                     provinces = new ObservableCollection<string>(stats.CityCatalogue.Values.Select(info => info.Province).Distinct());
+
+                    city1ComboBox.ItemsSource = stats.CityCatalogue.Keys;
+                    city2ComboBox.ItemsSource = stats.CityCatalogue.Keys;
                 }
                 provinceList.ItemsSource = provinces;
             }
@@ -54,13 +57,36 @@ namespace Project1_Group_16
         }
 
         // calculate distance between two cities
-        private void Button_ClickCalculate(object sender, RoutedEventArgs e)
+        private void Button_ClickFunction(object sender, RoutedEventArgs e)
         {
-
-        }
-        // compare population of two cities
-        private void Button_ClickCompare(object sender, RoutedEventArgs e)
-        {
+            try
+            {
+                switch (sender.ToString().Split(' ')[1].ToLower())
+                {
+                    case "compare":
+                        {
+                            CityInfo city;
+                            ulong smallerPop, largerPop;
+                            (city, smallerPop, largerPop) = stats.CompareCitiesPopulation(city1ComboBox.SelectedItem.ToString(), city2ComboBox.SelectedItem.ToString());
+                            largerCityNameTextBlock.Text = city.CityName;
+                            largerCityPopulationTextBlock.Text = String.Format("{0:n0}", largerPop);
+                            smallerCityPopulationTextBlock.Text = String.Format("{0:n0}", smallerPop);
+                            break;
+                        }
+                    case "calculate":
+                        {
+                            var blah = stats.CalculateDistanceBetweenCities(city1ComboBox.SelectedItem.ToString(), city2ComboBox.SelectedItem.ToString());
+                            distanceBetweenTextBlock.Text = String.Format("{0:n}", (stats.CalculateDistanceBetweenCities(city1ComboBox.SelectedItem.ToString(), city2ComboBox.SelectedItem.ToString())/ 1000) + " km");
+                            break;
+                        }
+                    default:
+                        throw new Exception("invalid button");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
         }
     }
