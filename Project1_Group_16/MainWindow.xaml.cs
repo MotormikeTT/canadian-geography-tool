@@ -16,7 +16,6 @@ namespace Project1_Group_16
     {
         private Statistics stats;
         private ObservableCollection<string> provinces;
-        private IEnumerable<string> cities;
 
         public MainWindow()
         {
@@ -75,8 +74,7 @@ namespace Project1_Group_16
                         }
                     case "calculate":
                         {
-                            var blah = stats.CalculateDistanceBetweenCities(city1ComboBox.SelectedItem.ToString(), city2ComboBox.SelectedItem.ToString());
-                            distanceBetweenTextBlock.Text = String.Format("{0:n}", (stats.CalculateDistanceBetweenCities(city1ComboBox.SelectedItem.ToString(), city2ComboBox.SelectedItem.ToString())/ 1000) + " km");
+                            distanceBetweenTextBlock.Text = String.Format("{0:n}", (stats.CalculateDistanceBetweenCities(city1ComboBox.SelectedItem.ToString(), city2ComboBox.SelectedItem.ToString())/ 1000)) + " km";
                             break;
                         }
                     default:

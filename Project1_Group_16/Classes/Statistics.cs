@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Device.Location;
 using Microsoft.Win32;
 using System.Diagnostics;
+using GeoCoordinatePortable;
 
 namespace Project1_Group_16.Classes
 {
