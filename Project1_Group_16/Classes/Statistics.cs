@@ -58,7 +58,7 @@ namespace Project1_Group_16.Classes
         /// <returns></returns>
         public (CityInfo, ulong, ulong) CompareCitiesPopulation(string city1, string city2)
         {
-            return (CityCatalogue[city1].Population > CityCatalogue[city2].Population ? CityCatalogue[city1] : CityCatalogue[city2], CityCatalogue[city2].Population, CityCatalogue[city1].Population);
+            return CityCatalogue[city1].Population > CityCatalogue[city2].Population ? (CityCatalogue[city1], CityCatalogue[city2].Population, CityCatalogue[city1].Population) : (CityCatalogue[city2], CityCatalogue[city1].Population, CityCatalogue[city2].Population);
         }
 
         /// <summary>
