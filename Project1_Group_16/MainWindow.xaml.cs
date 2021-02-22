@@ -59,6 +59,8 @@ namespace Project1_Group_16
                     city1ComboBox.ItemsSource = stats.CityCatalogue.Keys;
                     city2ComboBox.ItemsSource = stats.CityCatalogue.Keys;
                     provinces = stats.CityCatalogue.Values.Select(info => info.Province).Distinct();
+
+                    MessageBox.Show($"File of type {browsedType} parsed successfully!", "Parsing city data", MessageBoxButton.OK);
                 }
 
                 provinceList.ItemsSource = provinces;
