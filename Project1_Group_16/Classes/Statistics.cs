@@ -6,6 +6,9 @@ using GeoCoordinatePortable;
 
 namespace Project1_Group_16.Classes
 {
+    /// <summary>
+    /// Statistic class with functions that allows the user to retrieve information about the cities
+    /// </summary>
     class Statistics
     {
         // Properties
@@ -133,5 +136,5 @@ namespace Project1_Group_16.Classes
             CityInfo city = CityCatalogue.Values.Where(city => city.Capital == province).First();
             return (city.CityName, city.Latitude, city.Longitude);
         }
-    }
+    }   // end Statistics class
 }
