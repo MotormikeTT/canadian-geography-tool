@@ -40,11 +40,9 @@ namespace Project1_Group_16
                 bool? result = openFileDialog.ShowDialog();
                 if (result.HasValue && result.Value)
                 {
-                    //string ext = openFileDialog.FileName.Substring(openFileDialog.FileName.LastIndexOf('.') + 1);
                     stats = new Statistics(openFileDialog.FileName, browsedType);
 
                     // after parsing make sure provinces and cities collections are populated
-
                     city1ComboBox.ItemsSource = stats.CityCatalogue.Keys;
                     city2ComboBox.ItemsSource = stats.CityCatalogue.Keys;
                     provinces = stats.CityCatalogue.Values.Select(info => info.Province).Distinct();
@@ -67,9 +65,11 @@ namespace Project1_Group_16
                 citiesList.ItemsSource = cities;
 
                 provName.Text = selectedProvinceName;
-                provPop.Text = stats.DisplayProvincePopulation(selectedProvinceName).ToString();
+                ulong provPopulation = stats.DisplayProvincePopulation(selectedProvinceName);
+                provPop.Text = String.Format("{0:n0}", provPopulation);
                 provLargestCity.Text = stats.DisplayLargestPopulationCity(selectedProvinceName).CityName;
                 provSmallestCity.Text = stats.DisplaySmallestPopulationCity(selectedProvinceName).CityName;
+                provCaptial.Text = stats.GetCapital(selectedProvinceName).Item1;
             }
         }
 
@@ -80,7 +80,8 @@ namespace Project1_Group_16
                 selectedCityName = e.AddedItems[0] as string;
 
                 city.Text = selectedCityName;
-                cityPop.Text = stats.DisplayCityInformation($"{selectedCityName}, {selectedProvinceName}").Population.ToString();
+                CityInfo cityInfo = stats.DisplayCityInformation($"{selectedCityName}, {selectedProvinceName}");
+                cityPop.Text = String.Format("{0:n0}", cityInfo.Population);
             }
         }
 

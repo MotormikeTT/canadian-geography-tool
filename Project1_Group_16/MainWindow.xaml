@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project1_Group_16"
         mc:Ignorable="d"
-        Title="Group 16 - Canadian Geography Tool" Height="450" Width="800">
+        Title="Group 16 - Canadian Geography Tool" Height="500" Width="800">
     <DockPanel>
         <TextBlock Background="LightBlue" FontSize="18" Padding="10 1 0 3"
                 DockPanel.Dock="Top">Canadian Geography Tool</TextBlock>
@@ -50,8 +50,15 @@
                 Width="100px"
                 Margin="10,10,10,10">Parse CSV</Button>
         </StackPanel>
-        <DockPanel Background="DodgerBlue">
-            <StackPanel DockPanel.Dock="Top" Height="145">
+        <Grid Width="599">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="197*" />
+                <RowDefinition Height="243*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Background="DodgerBlue">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -62,6 +69,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid Margin="10">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
@@ -80,6 +88,8 @@
                         <TextBlock x:Name="provLargestCity" Grid.Row="3" HorizontalAlignment="Right" Padding="5"></TextBlock>
                         <TextBlock Grid.Row="4" Padding="5">Smallest Population City:</TextBlock>
                         <TextBlock x:Name="provSmallestCity" Grid.Row="4" HorizontalAlignment="Right" Padding="5"></TextBlock>
+                        <TextBlock Grid.Row="5" Padding="5">Captial:</TextBlock>
+                        <TextBlock x:Name="provCaptial" Grid.Row="5" HorizontalAlignment="Right" Padding="5"></TextBlock>
                     </Grid>
                     <Grid Grid.Column="1" Margin="10">
                         <Grid.RowDefinitions>
@@ -105,7 +115,7 @@
                     </Grid>
                 </Grid>
             </StackPanel>
-            <StackPanel DockPanel.Dock="Bottom" Background="LightGreen" Height="258">
+            <StackPanel Background="LightGreen" Margin="0,5,0,0" Grid.Row="1">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -162,6 +172,6 @@
                     </Grid>
                 </Grid>
             </StackPanel>
-        </DockPanel>
+        </Grid>
     </DockPanel>
 </Window>
