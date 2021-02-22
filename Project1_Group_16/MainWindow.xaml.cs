@@ -90,6 +90,10 @@ namespace Project1_Group_16
                 provLargestCity.Text = stats.DisplayLargestPopulationCity(selectedProvinceName).CityName;
                 provSmallestCity.Text = stats.DisplaySmallestPopulationCity(selectedProvinceName).CityName;
                 provCaptial.Text = stats.GetCapital(selectedProvinceName).Item1;
+
+                // remove city information
+                city.Text = string.Empty;
+                cityPop.Text = string.Empty;
             }
         }
 
