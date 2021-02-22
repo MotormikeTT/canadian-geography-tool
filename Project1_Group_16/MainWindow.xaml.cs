@@ -78,7 +78,7 @@ namespace Project1_Group_16
                         }
                     case "calculate":
                         {
-                            distanceBetweenTextBlock.Text = String.Format("{0:n}", (stats.CalculateDistanceBetweenCities(city1ComboBox.SelectedItem.ToString(), city2ComboBox.SelectedItem.ToString())/ 1000)) + " km";
+                            distanceBetweenTextBlock.Text = String.Format("{0:n}", (stats.CalculateDistanceBetweenCities(city1ComboBox.SelectedItem.ToString(), city2ComboBox.SelectedItem.ToString()) / 1000)) + " km";
                             break;
                         }
                     default:
@@ -89,7 +89,7 @@ namespace Project1_Group_16
             {
                 Console.WriteLine(ex.Message);
             }
-}
+        }
         private void provinceList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count != 0)
@@ -107,7 +107,7 @@ namespace Project1_Group_16
 
         private void cityList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if(e.AddedItems.Count != 0)
+            if (e.AddedItems.Count != 0)
             {
                 selectedCityName = e.AddedItems[0] as string;
 
@@ -141,5 +141,5 @@ namespace Project1_Group_16
                 provinceList.ItemsSource = provinces;
             }
         }
-    
+    }
 }
