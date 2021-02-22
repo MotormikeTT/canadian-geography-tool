@@ -4,8 +4,12 @@ using System.Text;
 
 namespace Project1_Group_16.Classes
 {
-    public class CityInfo
+    /// <summary>
+    /// Non-generic CityInfo class that holds information about the city
+    /// </summary>
+    class CityInfo
     {
+        // Properties
         public ulong CityID { get; set; }
         public string CityName { get; set; }
         public string CityAscii { get; set; }
@@ -15,7 +19,7 @@ namespace Project1_Group_16.Classes
         public double Longitude { get; set; }
         public string Capital { get; set; }
 
-        // constructors
+        // Constructors
         public CityInfo(string cityID, string cityName, string cityAscii, string population, string province, string latitude, string longitude, string capital)
         {
             if (ulong.TryParse(cityID, out ulong id))
@@ -87,5 +91,5 @@ namespace Project1_Group_16.Classes
             return (Latitude, Longitude);
         }
 
-    }
+    }   // end CityInfo class
 }

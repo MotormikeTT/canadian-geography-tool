@@ -7,12 +7,23 @@ using System.Xml;
 
 namespace Project1_Group_16.Classes
 {
+    /// <summary>
+    /// Non-generic DataModeler class to parse the data files
+    /// </summary>
     class DataModeler
     {
+        // Property to hold the city information
         private static Dictionary<string, CityInfo> _cityCatalogue;
 
+        // Customized delegate
         private delegate void Parse(string fileName);
 
+        /// <summary>
+        /// Invoke one of the parsing methods using the delegate.
+        /// </summary>
+        /// <param name="fileName">the file name to be parsed</param>
+        /// <param name="fileType">the type of file to be parsed</param>
+        /// <returns></returns>
         public static Dictionary<string, CityInfo> ParseFile(string fileName, string fileType)
         {
             Parse parseDel;
@@ -139,5 +150,5 @@ namespace Project1_Group_16.Classes
                 }
             }
         }
-    }
+    }   // end DataModeler class
 }

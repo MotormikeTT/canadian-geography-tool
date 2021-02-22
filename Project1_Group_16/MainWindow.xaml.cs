@@ -1,4 +1,11 @@
-﻿using Microsoft.Win32;
+﻿/*
+ * Program:         Project1_Group_16.exe
+ * Date:            2/19/2021
+ * Authors:         Michael Mac Lean, George Moussa, Rachael Rin
+ * Description:     Program that allows the user to access statistics from the World Cities Database and displays all required information.        
+ */
+
+using Microsoft.Win32;
 using Project1_Group_16.Classes;
 using System;
 using System.Collections.Generic;
@@ -13,6 +20,7 @@ namespace Project1_Group_16
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Properties
         private Statistics stats;
         private IEnumerable<string> provinces;
         private IEnumerable<string> cities;
@@ -24,6 +32,11 @@ namespace Project1_Group_16
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Button for parsing data file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_ClickParse(object sender, RoutedEventArgs e)
         {
             try
@@ -56,6 +69,11 @@ namespace Project1_Group_16
             }
         }
 
+        /// <summary>
+        /// combobox handler for provinceList
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void provinceList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count != 0)
@@ -73,6 +91,11 @@ namespace Project1_Group_16
             }
         }
 
+        /// <summary>
+        /// combobox handler for cityList
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cityList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count != 0)
@@ -85,6 +108,11 @@ namespace Project1_Group_16
             }
         }
 
+        /// <summary>
+        /// combobox handler for city 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void city_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count != 0)
@@ -93,6 +121,11 @@ namespace Project1_Group_16
             }
         }
 
+        /// <summary>
+        /// hyperlink handler to open map
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void hyperlink_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(selectedCityName) && !string.IsNullOrEmpty(selectedProvinceName))
@@ -101,6 +134,11 @@ namespace Project1_Group_16
             }
         }
 
+        /// <summary>
+        /// button handler for rank
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_ClickRank(object sender, RoutedEventArgs e)
         {
             if (stats != null)
