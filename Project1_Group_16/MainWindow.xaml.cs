@@ -15,8 +15,10 @@ namespace Project1_Group_16
     public partial class MainWindow : Window
     {
         private Statistics stats;
-        private ObservableCollection<string> provinces;
+        private IEnumerable<string> provinces;
         private IEnumerable<string> cities;
+        private string selectedProvinceName;
+        private string selectedCityName;
 
         public MainWindow()
         {
@@ -43,8 +45,9 @@ namespace Project1_Group_16
                     stats = new Statistics(openFileDialog.FileName, browsedType);
 
                     // after parsing make sure provinces and cities collections are populated
-                    provinces = new ObservableCollection<string>(stats.CityCatalogue.Values.Select(info => info.Province).Distinct());
+                    provinces = stats.CityCatalogue.Values.Select(info => info.Province).Distinct();
                 }
+
                 provinceList.ItemsSource = provinces;
             }
             catch (Exception ex)
@@ -53,15 +56,56 @@ namespace Project1_Group_16
             }
         }
 
-        // calculate distance between two cities
-        private void Button_ClickCalculate(object sender, RoutedEventArgs e)
+        private void provinceList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
+            if (e.AddedItems.Count != 0)
+            {
+                selectedProvinceName = e.AddedItems[0] as string;
+                cities = stats.DisplayProvinceCities(selectedProvinceName).Select(info => info.CityName);
+                citiesList.ItemsSource = cities;
 
+                provName.Text = selectedProvinceName;
+                provPop.Text = stats.DisplayProvincePopulation(selectedProvinceName).ToString();
+                provLargestCity.Text = stats.DisplayLargestPopulationCity(selectedProvinceName).CityName;
+                provSmallestCity.Text = stats.DisplaySmallestPopulationCity(selectedProvinceName).CityName;
+            }
         }
-        // compare population of two cities
-        private void Button_ClickCompare(object sender, RoutedEventArgs e)
-        {
 
+        private void cityList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if(e.AddedItems.Count != 0)
+            {
+                selectedCityName = e.AddedItems[0] as string;
+
+                city.Text = selectedCityName;
+                cityPop.Text = stats.DisplayCityInformation($"{selectedCityName}, {selectedProvinceName}").Population.ToString();
+            }
+        }
+
+        private void hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(selectedCityName) && !string.IsNullOrEmpty(selectedProvinceName))
+            {
+                stats.ShowCityOnMap(selectedCityName, selectedProvinceName);
+            }
+        }
+
+        private void Button_ClickRank(object sender, RoutedEventArgs e)
+        {
+            if (stats != null)
+            {
+                string rankType = sender.ToString().Split(' ')[1].ToLower();
+                if (rankType == "population")
+                {
+                    provinces = stats.RankProvincesByPopulation().Keys;
+                }
+                else if (rankType == "city")
+                {
+                    provinces = stats.RankProvincesByCities().Keys;
+                }
+
+                provinceList.ItemsSource = provinces;
+            }
         }
     }
 }

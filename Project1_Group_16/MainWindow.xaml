@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project1_Group_16"
-        DataContext="{Binding Path=MainWindowViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -17,15 +16,26 @@
             <TextBlock Padding="5" FontWeight="Bold">
                 General Input:
             </TextBlock>
+            <TextBlock Padding="6 0 0 0">
+                    Rank provinces by:
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button  Margin="20 5 20 5" Height="19" Width="66" Click="Button_ClickRank">
+                    Population
+                </Button>
+                <Button  Margin="20 5 20 5" Height="19" Width="59" Click="Button_ClickRank">
+                    City
+                </Button>
+            </StackPanel>
             <TextBlock Padding="20 5 5 5">
                 Province:
             </TextBlock>
-            <ComboBox Name="provinceList" Margin="20 5 20 5" ItemsSource="{Binding provinces, Mode=TwoWay, NotifyOnSourceUpdated=True}">
+            <ComboBox Name="provinceList" Margin="20 5 20 5" SelectionChanged="provinceList_SelectionChanged">
             </ComboBox>
             <TextBlock Padding="20 5 5 5">
                 City:
             </TextBlock>
-            <ComboBox Margin="20 5 20 5" ItemsSource="{Binding cities, Mode=TwoWay, NotifyOnSourceUpdated=True}">
+            <ComboBox Name="citiesList" Margin="20 5 20 5" SelectionChanged="cityList_SelectionChanged">
             </ComboBox>
             <Button HorizontalAlignment="Center" Click="Button_ClickParse"
                 Height="30px"
@@ -56,13 +66,20 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <TextBlock FontWeight="Bold">Province Information</TextBlock>
                         <TextBlock Grid.Row="1" Padding="5">Province Name:</TextBlock>
+                        <TextBlock x:Name="provName" Grid.Row="1" HorizontalAlignment="Right" Padding="5"></TextBlock>
                         <TextBlock Grid.Row="2" Padding="5">Province Population:</TextBlock>
+                        <TextBlock x:Name="provPop" Grid.Row="2" HorizontalAlignment="Right" Padding="5"></TextBlock>
+                        <TextBlock Grid.Row="3" Padding="5">Largest Population City:</TextBlock>
+                        <TextBlock x:Name="provLargestCity" Grid.Row="3" HorizontalAlignment="Right" Padding="5"></TextBlock>
+                        <TextBlock Grid.Row="4" Padding="5">Smallest Population City:</TextBlock>
+                        <TextBlock x:Name="provSmallestCity" Grid.Row="4" HorizontalAlignment="Right" Padding="5"></TextBlock>
                     </Grid>
                     <Grid Grid.Column="1" Margin="10">
                         <Grid.RowDefinitions>
@@ -76,8 +93,15 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock FontWeight="Bold">City Information</TextBlock>
                         <TextBlock Grid.Row="1" Padding="5">City Name:</TextBlock>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right" Name="city" Padding="5"></TextBlock>
                         <TextBlock Grid.Row="2" Padding="5">City Population:</TextBlock>
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Right" Name="cityPop" Padding="5"></TextBlock>
                         <TextBlock Grid.Row="3" Padding="5">City Location:</TextBlock>
+                        <TextBlock Grid.Row="3" HorizontalAlignment="Right" Padding="5">
+                            <Hyperlink Click="hyperlink_Click">
+                                Click here for location
+                            </Hyperlink>
+                        </TextBlock>
                     </Grid>
                 </Grid>
             </StackPanel>
@@ -112,7 +136,7 @@
                             <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Padding="5">Larger City:</TextBlock>
                             <TextBlock Grid.Row="4" Grid.ColumnSpan="2" Padding="5,0,0,0">Population:</TextBlock>
                             <Button Grid.Row="5" Grid.ColumnSpan="2" Margin="0,20,0,0" Padding="5" Height="30px"
-                             Width="150px" Click="Button_ClickCompare">Compare</Button>
+                             Width="150px">Compare</Button>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1" Margin="10, 30, 10 10">
@@ -133,7 +157,7 @@
                         <TextBlock Grid.Row="2" FontWeight="Bold">Calculate Distance</TextBlock>
                         <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Margin="0,10,0,0" Padding="5">Total Distance:</TextBlock>
                         <Button Grid.Row="4" Grid.ColumnSpan="2" Margin="0,20,0,0" Padding="5" Height="30px"
-                        Width="150px" Click="Button_ClickCalculate">Calculate</Button>
+                        Width="150px">Calculate</Button>
                     </Grid>
                 </Grid>
             </StackPanel>
