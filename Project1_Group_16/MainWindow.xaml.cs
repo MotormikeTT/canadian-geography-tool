@@ -1,6 +1,6 @@
 ﻿/*
  * Program:         Project1_Group_16.exe
- * Date:            2/21/2021
+ * Date:            2/19/2021
  * Author:          Michael Mac Lean, George Moussa, Rachael Rin
  * Description:     Program that allows the user to access statistics from the World Cities Database and displays all required information.        
  */
