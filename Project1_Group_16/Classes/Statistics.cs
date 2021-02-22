@@ -66,8 +66,8 @@ namespace Project1_Group_16.Classes
         public void ShowCityOnMap(string city, string province)
         {
             Process process = new Process();
-            process.StartInfo.FileName = GetStandardBrowserPath();
-            process.StartInfo.Arguments = "https://www.google.com/maps/place/" + city + "," + province;
+            process.StartInfo.UseShellExecute = true;
+            process.StartInfo.FileName = "https://www.google.com/maps/place/" + city + "," + province;
             process.Start();
         }
 
@@ -108,7 +108,7 @@ namespace Project1_Group_16.Classes
         /// <summary>
         /// Ranks all provinces by population.
         /// </summary>
-        /// <returns>A Dictionary with the city name and population.</returns>
+        /// <returns>A Dictionary with the province name and population.</returns>
         public Dictionary<string, ulong> RankProvincesByPopulation()
         {
             return (from city in CityCatalogue.Values group city by new { city.Province } into province select new { province.Key.Province, Population = (ulong)province.Sum(prov => (decimal)prov.Population) }).OrderBy(prov => prov.Population).ToDictionary(x => x.Province, y => y.Population);
@@ -132,51 +132,6 @@ namespace Project1_Group_16.Classes
         {
             CityInfo city = CityCatalogue.Values.Where(city => city.Capital == province).First();
             return (city.CityName, city.Latitude, city.Longitude);
-        }
-
-        /// <summary>
-        /// Gets the path to the default browser.
-        /// </summary>
-        /// <returns>A string with the path.</returns>
-        private string GetStandardBrowserPath()
-        {
-            string browserPath = string.Empty;
-            RegistryKey browserKey = null;
-
-            try
-            {
-                //Read default browser path from Win XP registry key
-                browserKey = Registry.ClassesRoot.OpenSubKey(@"HTTP\shell\open\command", false);
-
-                //If browser path wasn't found, try Win Vista (and newer) registry key
-                if (browserKey == null)
-                {
-                    browserKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http", false); ;
-                }
-
-                //If browser path was found, clean it
-                if (browserKey != null)
-                {
-                    //Remove quotation marks
-                    browserPath = (browserKey.GetValue(null) as string).ToLower().Replace("\"", "");
-
-                    //Cut off optional parameters
-                    if (!browserPath.EndsWith("exe"))
-                    {
-                        browserPath = browserPath.Substring(0, browserPath.LastIndexOf(".exe") + 4);
-                    }
-
-                    //Close registry key
-                    browserKey.Close();
-                }
-            }
-            catch
-            {
-                //Return empty string, if no path was found
-                return "";
-            }
-            //Return default browsers path
-            return browserPath;
         }
     }
 }
